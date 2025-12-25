@@ -1,37 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   routine2.c                                         :+:      :+:    :+:   */
+/*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aghalmi <aghalmi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/24 22:03:56 by aghalmi           #+#    #+#             */
-/*   Updated: 2025/12/25 22:09:02 by aghalmi          ###   ########.fr       */
+/*   Created: 2025/12/25 21:47:49 by aghalmi           #+#    #+#             */
+/*   Updated: 2025/12/25 21:51:49 by aghalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
 
-void	philo_think(t_philo *philo)
+void	destroy_mutex(t_data *data)
 {
-	print_philo_action(philo, "is thinking");
+	int	i;
+
+	i = 0;
+	while (i < data->n_philo)
+	{
+		pthread_mutex_destroy(&data->fork[i]);
+		i++;
+	}
+	pthread_mutex_destroy(&data->print_mutex);
+	pthread_mutex_destroy(&data->stop_mutex);
+	pthread_mutex_destroy(&data->eat_mutex);
 }
 
-void	*philo_routine(void *av)
+void	free_data(t_data *data)
 {
-	t_philo	*philo;
+	if (data->fork)
+		free(data->fork);
+	if (data->philo)
+		free(data->philo);
+}
 
-	philo = (t_philo *)av;
-	pthread_mutex_lock(&philo->data->eat_mutex);
-	philo->last_eat = getting_time();
-	pthread_mutex_unlock(&philo->data->eat_mutex);
-	while (!philo->data->stop)
-	{
-		philo_take_fork(philo);
-		philo_eat(philo);
-		philo_put_fork(philo);
-		philo_sleep(philo);
-		philo_think(philo);
-	}
-	return (NULL);
+void	free_all(t_data *data)
+{
+	destroy_mutex(data);
+	free_data(data);
 }

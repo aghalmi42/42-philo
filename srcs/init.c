@@ -6,7 +6,7 @@
 /*   By: aghalmi <aghalmi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/23 19:25:55 by aghalmi           #+#    #+#             */
-/*   Updated: 2025/12/23 19:43:23 by aghalmi          ###   ########.fr       */
+/*   Updated: 2025/12/25 21:59:05 by aghalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int	init_data(t_data *data)
 		data->philo[i].id = i + 1;
 		data->philo[i].fork_left = i;
 		data->philo[i].fork_right = (i + data->n_philo - 1) % data->n_philo;
-		data->philo[i].last_eat = 0;
+		data->philo[i].last_eat = data->time_start;
 		data->philo[i].n_eat = 0;
 		data->philo[i].data = data;
 		i++;
@@ -70,9 +70,9 @@ int	init(t_data *data)
 		return (0);
 	if (!init_mutex(data))
 		return (0);
+	init_time(data);
 	if (!init_data(data))
 		return (0);
-	init_time(data);
 	data->stop = 0;
 	return (1);
 }

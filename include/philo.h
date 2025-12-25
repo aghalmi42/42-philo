@@ -6,7 +6,7 @@
 /*   By: aghalmi <aghalmi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/19 20:10:08 by aghalmi           #+#    #+#             */
-/*   Updated: 2025/12/24 22:20:56 by aghalmi          ###   ########.fr       */
+/*   Updated: 2025/12/25 21:54:22 by aghalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ typedef struct s_data
 	pthread_mutex_t		print_mutex;
 	pthread_mutex_t		stop_mutex;
 	pthread_mutex_t		eat_mutex;
+	pthread_t			check_thread;
 }						t_data;
 
 struct					s_philo
@@ -75,4 +76,13 @@ void					*philo_routine(void *av);
 // thread
 int						create_thread(t_data *data);
 int						join_thread(t_data *data);
+// check
+int						philo_dead(t_data *data, int i);
+int						check_eat_all(t_data *data);
+int						check_condition(t_data *data);
+void					*check_dead(void *av);
+// free
+void					destroy_mutex(t_data *data);
+void					free_data(t_data *data);
+void					free_all(t_data *data);
 #endif

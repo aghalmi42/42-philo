@@ -6,7 +6,7 @@
 #    By: aghalmi <aghalmi@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/23 17:37:31 by aghalmi           #+#    #+#              #
-#    Updated: 2025/12/24 22:21:57 by aghalmi          ###   ########.fr        #
+#    Updated: 2025/12/25 22:10:14 by aghalmi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,9 @@ SRCS =  srcs/main.c \
 		srcs/init.c \
 		srcs/time.c \
 		srcs/routine.c \
-		srcs/routine2.c
+		srcs/routine2.c \
+		srcs/check.c \
+		srcs/free.c
 
 OBJS = $(SRCS:.c=.o)
 
