@@ -6,7 +6,7 @@
 /*   By: aghalmi <aghalmi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/24 21:41:11 by aghalmi           #+#    #+#             */
-/*   Updated: 2025/12/25 22:07:08 by aghalmi          ###   ########.fr       */
+/*   Updated: 2025/12/26 15:14:44 by aghalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,16 +33,16 @@ void	philo_take_fork(t_philo *philo)
 	if (philo->id % 2 == 0)
 	{
 		pthread_mutex_lock(&philo->data->fork[philo->fork_left]);
-		print_philo_action(philo, "has token a fork");
+		print_philo_action(philo, "has taken a fork");
 		pthread_mutex_lock(&philo->data->fork[philo->fork_right]);
-		print_philo_action(philo, "has token a fork");
+		print_philo_action(philo, "has taken a fork");
 	}
 	else
 	{
 		pthread_mutex_lock(&philo->data->fork[philo->fork_right]);
-		print_philo_action(philo, "has token a fork");
+		print_philo_action(philo, "has taken a fork");
 		pthread_mutex_lock(&philo->data->fork[philo->fork_left]);
-		print_philo_action(philo, "has token a fork");
+		print_philo_action(philo, "has taken a fork");
 	}
 }
 

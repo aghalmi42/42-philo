@@ -6,7 +6,7 @@
 /*   By: aghalmi <aghalmi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/23 20:01:29 by aghalmi           #+#    #+#             */
-/*   Updated: 2025/12/25 21:59:43 by aghalmi          ###   ########.fr       */
+/*   Updated: 2025/12/26 15:14:27 by aghalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ int	join_thread(t_data *data)
 	int	i;
 
 	i = 0;
+	pthread_join(data->check_thread, NULL);
 	while (i < data->n_philo)
 	{
 		pthread_join(data->philo[i].thread, NULL);
