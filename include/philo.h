@@ -6,7 +6,7 @@
 /*   By: aghalmi <aghalmi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/19 20:10:08 by aghalmi           #+#    #+#             */
-/*   Updated: 2025/12/25 21:54:22 by aghalmi          ###   ########.fr       */
+/*   Updated: 2025/12/26 17:26:00 by aghalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,8 @@ void					philo_eat(t_philo *philo);
 void					philo_put_fork(t_philo *philo);
 void					philo_sleep(t_philo *philo);
 void					philo_think(t_philo *philo);
+void					single_philo(t_philo *philo);
+void					init_philo_routine(t_philo *philo);
 void					*philo_routine(void *av);
 // thread
 int						create_thread(t_data *data);
