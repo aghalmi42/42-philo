@@ -6,7 +6,7 @@
 /*   By: aghalmi <aghalmi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/27 23:05:24 by aghalmi           #+#    #+#             */
-/*   Updated: 2025/12/27 23:17:26 by aghalmi          ###   ########.fr       */
+/*   Updated: 2025/12/28 14:57:31 by aghalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,10 @@ typedef struct s_data
 	int					stop;
 	long long			time_start;
 	t_philo				*philo;
+	sem_t				*fork;
+	sem_t				*print_sem;
+	sem_t				*stop_sem;
+	sem_t				*eat_sem;
 }						t_data;
 
 struct					s_philo
@@ -46,7 +50,7 @@ struct					s_philo
 	int					fork_left;
 	int					fork_right;
 	t_data				*data;
-	pthread_t			thread;
+	pid_t				pid;
 };
 
 // parsing
@@ -58,5 +62,14 @@ int						parsing_argument(int ac, char **av, t_data *data);
 // time
 void					init_time(t_data *data);
 long long				getting_time(void);
+// init
+int						init_semaphore(t_data *data);
+int						init_philo(t_data *data);
+int						init_data(t_data *data);
+int						init(t_data *data);
+// processus
+void					kill_processus(t_data *data);
+int						create_processus(t_data *data);
+void					wait_processus(t_data *data);
 
 #endif
