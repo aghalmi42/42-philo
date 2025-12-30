@@ -6,7 +6,7 @@
 /*   By: aghalmi <aghalmi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/27 23:05:24 by aghalmi           #+#    #+#             */
-/*   Updated: 2025/12/29 23:38:54 by aghalmi          ###   ########.fr       */
+/*   Updated: 2025/12/30 16:32:00 by aghalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,6 @@ struct					s_philo
 	int					id;
 	long long			last_eat;
 	int					n_eat;
-	int					fork_left;
-	int					fork_right;
 	t_data				*data;
 	pid_t				pid;
 };

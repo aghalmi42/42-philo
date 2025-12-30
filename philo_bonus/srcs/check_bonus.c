@@ -6,7 +6,7 @@
 /*   By: aghalmi <aghalmi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 21:47:44 by aghalmi           #+#    #+#             */
-/*   Updated: 2025/12/29 23:43:52 by aghalmi          ###   ########.fr       */
+/*   Updated: 2025/12/30 16:31:15 by aghalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	check_dead(t_philo *philo)
 	last_eat = philo->last_eat;
 	sem_post(philo->data->eat_sem);
 	time = getting_time();
-	if (time - last_eat > philo->data->eat_time)
+	if (time - last_eat > philo->data->die_time)
 		return (1);
 	return (0);
 }
